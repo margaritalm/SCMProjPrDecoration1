@@ -38,10 +38,10 @@ namespace purchasepal_core
             {
                 using (var conn = new SqlConnection("conn..."))
                 {
-                 
+                    var sql = "SELECT * FROM Users WHERE username = '" + username + "' AND pwd = '" + password + "'";
                     using (var cmd = new SqlCommand(sql))
                     {
-                        
+                        cmd.Parameters.AddWithValue("@username", username);
                         cmd.Connection = conn;
                         cmd.ExecuteScalar();
                     }
